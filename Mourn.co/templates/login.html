@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mourn</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <header class="header"></header>
+    <!-- <img src ="" width="80px" height="80px"> -->
+    
+</head>
+</head>
+<body>
+  
+  <center>
+    <div class="wrapper"  style= "margin-top:300px">    
+      
+<div id="id01" class="modal">
+
+
+    <label for="uname"><b>Login</b></label>
+    <br><input type="text" placeholder="Enter Username" name="uname" required><br>
+    <i class='bx bx-lock-alt'></i>
+      <label for="psw"></label>
+                  
+      <input type="password" placeholder="Enter Password" name="psw" required>
+                 
+                    <input type="checkbox" checked="checked" name="remember"> Remember me
+                  </label>
+                  <br><button type="submit">Login</button>
+                  <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button><br>
+                  <span class="psw">Forgot <a href="#">password?</a></span>
+                  <label>
+                </div>
+            
+              </form>
+            </div>
+            
+            
+
+    </body>
+    
+    <script>
+    function login(event) {
+        event.preventDefault();  // Prevent form from submitting the traditional way
+        const form = event.target;
+        const formData = new FormData(form);
+        const data = {
+            username: formData.get('uname'),
+            password: formData.get('psw')
+        };
+
+        fetch('http://localhost:9999/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => {
+            if (response.status === 200) {
+                window.location.href = 'homepage.html';
+            } else {
+                return response.text();
+            }
+        })
+        .then(message => {
+            if (message) {
+                alert(message);
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    }
+
+    // Get the modal
+    var modal = document.getElementById('id01');
+    
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+    </script>
+    
+    <style>
+      Form {
+  Display: flex;      
+  margin: 10px;
+  padding: 10px;
+  Justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.wrapper {
+  width: 420px;
+ 
+  border-radius: 10px;
+  background: black;
+  border: 2px solid rgb(0, 0, 0);
+  backdrop-filter: Blur(20px); 
+  color:#80b9ff;
+  padding: 30px 40px;
+  box-shadow: 0 0 10px rgba(186, 68, 68, 0.2);
+}
+
+.wrapper h1 {
+  font-size: 36px;
+  text-align: center;
+}
+
+.wrapper .input-box {
+  width: 100%;
+  height: 50px;
+  margin: 30px 0;
+}
+
+.input-box input {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  border: 2px solid pink;
+  border-radius: 40px;
+  font-size: 16px;
+  color: white;
+  padding: 20px 45px 20px 20px;
+}
+
+.input-box input ::placeholder {
+  color: white;
+}
+
+.input-box i {
+  position: absolute;
+  right: 2opx;
+  top: 50%;
+  transform: translateY(50%);
+  font-size: 20px;
+}
+
+.wrapper .remember-forgot {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14.5px;
+  margin: -15px 0 15px;
+}
+
+.remember-forgot {
+  accent-color: white;
+  margin-right: 3px;
+}
+
+.remember-forgot {
+  color: white;
+  text-decoration: none; 
+}
+
+.remember-forgot a:hover {
+  text-decoration: underline;
+}
+
+.wrapper .btn {
+  width: 100%;
+  height: 45px;
+  background: white;
+  border: none;
+  outline: none;
+  border-radius: 40px;
+  box-shadow: 0 0 10px; color: black;
+  cursor: pointer;
+  font-size: 16px;
+  color: #333;
+  font-weight: 600;
+}
+
+.wrapper .register-link {
+    font-size: 14;   
+    text-align: center;
+    margin-top: 20px;
+    margin: 20px 0 15px
+} 
+
+.register-link p a {
+  color: color white;
+  text-decoration: none;
+  font-weight: 600px;
+}
+
+.register-link p a:hover {
+  text-decoration: underline;
+}
+  </style>
+
+
+</body>
+
+  </form>
+</div>
+</html>
+
+
+ 
